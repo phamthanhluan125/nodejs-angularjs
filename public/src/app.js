@@ -1,15 +1,11 @@
-var app = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ui.router']);
 
-app.controller('myController', myController);
+myApp.config(function($stateProvider, $urlRouterProvider) {
 
-function myController($scope, $http) {
-  $scope.title = 'Xin chao!!!';
-  $scope.listUsers = [];
+    $urlRouterProvider.otherwise('/user'); //Mọi đường dẫn không hợp lệ đều được chuyển đến state home
 
-  $scope.getListUsers = function(){
-    $http.get('/user').then(function(result) {
-      $scope.listUsers = result.data;
+    $stateProvider.state('user', {
+      url: '/user',
+      templateUrl: 'views/user.html'
     });
-  }
-  $scope.getListUsers();
-}
+});
