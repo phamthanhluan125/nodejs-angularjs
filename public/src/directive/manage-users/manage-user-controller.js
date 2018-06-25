@@ -1,5 +1,10 @@
 angular.module('myApp')
-  .controller('ManageUserCtrl', function($rootScope, $scope, $state, Flash) { 'use strict';
-    var ctrl = this;
-
+  .controller('manageUserCtrl', function($scope, $http) { 'use strict';
+    $scope.title = "Trang Manage User"
+    $scope.getListUsers = function(){ 
+      $http.get('/user').then(function(result) { 
+        $scope.listUsers = result.data; 
+      }); 
+    } 
+    $scope.getListUsers(); 
 })

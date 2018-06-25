@@ -2,7 +2,7 @@ var user = require('../models/user');
 
 module.exports = {
   configure: function(app) {
-    app.get('/api/user/', function(req, res) {
+    app.get('/user/', function(req, res) {
       user.get(res);
     });
 
